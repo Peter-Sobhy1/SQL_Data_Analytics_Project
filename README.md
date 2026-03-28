@@ -138,14 +138,9 @@ It reflects real-world analytics workflows used in business environments — fro
 
 ---
 
-## 👤 Author
-**Peter Sobhy**
-- LinkedIn: https://www.linkedin.com/in/peter-sobhy/
-- GitHub: https://github.com/Peter-Sobhy1
----
 
 ## 👤 Author
 
 **Peter Sobhy**
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/peter-sobhy/)
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Peter-Sobhy1)
+- [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/peter-sobhy/)
+- [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Peter-Sobhy1)
