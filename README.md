@@ -1,6 +1,9 @@
 # SQL Data Analytics Project
 
-A comprehensive collection of **13 T-SQL scripts** covering the full spectrum of analytical workflows — from raw database exploration to advanced KPI reporting. Built on a sales data warehouse using **SQL Server**, **SSMS**, and **VS Code**.
+## 🚀 Overview
+This project is a collection of **13 T-SQL scripts** that demonstrate an end-to-end **SQL-based data analytics workflow** built on a sales data warehouse. It covers the full analytical lifecycle — from raw data exploration to advanced reporting and business insights.
+
+Using **T-SQL**, I analyzed transactional sales data to uncover trends in revenue, customer behavior, and product performance.
 
 ---
 
@@ -25,103 +28,120 @@ SQL_Data_Analytics_Project/
     └── 13_report_products.sql
 ```
 
----
-
-## 🗄️ Database Schema
-
-The project uses a **Gold Layer** star schema from a sales data warehouse, consisting of:
-
-| Table | Type | Description |
-|---|---|---|
-| `gold.fact_sales` | Fact | Orders, revenue, quantity, dates |
-| `gold.dim_customers` | Dimension | Customer demographics and geography |
-| `gold.dim_products` | Dimension | Product catalog with categories and cost |
+## 📊 Dataset & Scale
+- **$29.4M+ total revenue**
+- **27,659 orders**
+- **18,484 customers**
+- **295 products**
+- Data spanning **37 months (Dec 2010 – Jan 2014)**
 
 ---
 
-## 📊 Scripts Overview
-
-### 🔍 Exploration Phase
-
-**1. Database Exploration** — Queries `INFORMATION_SCHEMA` to inventory all tables and inspect column metadata. Entry point for any unfamiliar database.
-
-**2. Dimensions Exploration** — Audits dimension tables using `DISTINCT` to identify unique values across countries, categories, subcategories, and product names.
-
-**3. Date Range Exploration** — Uses `MIN()`, `MAX()`, and `DATEDIFF()` to establish temporal boundaries of the data — first/last order dates and customer age range.
-
-**4. Measures Exploration** — Calculates all core business metrics in one unified report: total sales, total quantity, average price, total orders, total products, and total customers via `UNION ALL`.
+## 🧠 Key Objectives
+- Explore and understand the underlying data structure  
+- Build core business metrics and KPIs  
+- Perform deep-dive analysis across multiple dimensions  
+- Generate reusable reporting datasets for stakeholders  
 
 ---
 
-### 📈 Analysis Phase
+## 🔍 Analytical Workflow
 
-**5. Magnitude Analysis** — Groups and aggregates data by key dimensions (country, gender, category) using `GROUP BY` and `JOIN` to reveal distribution patterns across customers and revenue.
-
-**6. Ranking Analysis** — Ranks top and bottom performers using `TOP N` and `ROW_NUMBER() OVER(PARTITION BY ...)` to surface the best and worst products, countries, and subcategories by revenue.
-
-**7. Change Over Time Analysis** — Tracks monthly and yearly revenue trends using `DATETRUNC()`, `YEAR()`, and `MONTH()` for time-series analysis and seasonality identification.
-
-**8. Cumulative Analysis** — Computes running totals and moving averages using `SUM() OVER()` and `AVG() OVER()` window functions to track long-term growth trajectories.
-
-**9. Performance Analysis** — Year-over-year product performance using `LAG()` to compare current vs. prior year sales, classify trends (Increase / Decrease / No Change), and benchmark against product averages.
-
-**10. Data Segmentation** — Segments products into cost tiers (Economy / Regular / Intermediate / High) and customers into behavioral groups (VIP / Regular / New) using `CASE` logic based on spend and lifespan.
-
-**11. Part-to-Whole Analysis** — Calculates each category's percentage contribution to total revenue using `SUM() OVER()` as a window function denominator, returning clean ratio outputs.
+### 1. Data Exploration
+- Analyzed database structure using `INFORMATION_SCHEMA`
+- Explored key dimensions (country, category, product hierarchy)
+- Identified data quality issues (e.g., missing categories, unrealistic customer ages)
 
 ---
 
-### 📋 Reporting Phase
-
-**12. Customer Report (`gold.report_customers`)** — A reusable SQL View consolidating customer-level KPIs:
-- Age & age group segmentation (20s, 30s, 40s, 50+)
-- Customer segment (VIP / Regular / New)
-- Total orders, sales, quantity, lifespan
-- Recency in months, Average Order Value (AOV), Average Monthly Spend
-
-**13. Product Report (`gold.report_products`)** — A reusable SQL View consolidating product-level KPIs:
-- Revenue-based segmentation (High-Performer / Mid-Range / Low-Performer)
-- Total orders, sales, quantity, unique customers, lifespan
-- Recency in months, Average Order Revenue (AOR), Average Monthly Revenue
+### 2. Core Metrics & Aggregation
+- Calculated KPIs including total revenue, orders, customers, and average price
+- Aggregated data across dimensions such as country, gender, and product category
 
 ---
 
-## 🛠️ SQL Skills Demonstrated
+### 3. Advanced Analysis
 
-| Skill | Scripts |
-|---|---|
-| Aggregation (`SUM`, `COUNT`, `AVG`) | 4, 5, 7, 8 |
-| Window Functions (`SUM OVER`, `AVG OVER`, `LAG`, `ROW_NUMBER`) | 6, 8, 9, 11 |
-| CTEs (`WITH` clause) | 6, 8, 9, 10, 11 |
-| `CASE` conditional logic | 9, 10, 12, 13 |
-| `JOIN` (LEFT JOIN across fact/dim tables) | 5, 6, 7, 9, 11, 12, 13 |
-| Date Functions (`DATEDIFF`, `DATETRUNC`, `YEAR`, `MONTH`, `GETDATE`) | 3, 7, 8, 12, 13 |
-| `INFORMATION_SCHEMA` metadata queries | 1 |
-| SQL Views (`CREATE VIEW`) | 12, 13 |
-| `UNION ALL` for consolidated reporting | 4 |
-| Subqueries & derived tables | 10 |
+#### 📈 Time-Series Analysis
+- Tracked monthly and yearly revenue trends
+- Identified growth patterns and seasonality
+
+#### 🏆 Ranking Analysis
+- Identified top and bottom-performing products and regions by revenue
+
+#### 🔄 Performance Analysis
+- Used `LAG()` to compare year-over-year product performance
+- Classified trends as Increase, Decrease, or No Change
+
+#### 📊 Cumulative Analysis
+- Calculated running totals and moving averages using window functions
+
+#### 🧩 Segmentation
+- Segmented:
+  - Customers → VIP, Regular, New  
+  - Products → Economy, Regular, Intermediate, High  
+- Enabled targeted analysis of behavior and value
+
+#### 📉 Part-to-Whole Analysis
+- Measured each category’s contribution to total revenue
+- Found **Bikes generate ~96% of total sales**
 
 ---
 
-## ⚙️ Tools & Environment
+## 📋 Reporting Layer
 
-- **Database:** Microsoft SQL Server
-- **Query Tools:** SSMS (SQL Server Management Studio), VS Code
-- **Language:** T-SQL (Transact-SQL)
-- **Schema Layer:** Gold (curated, analytics-ready)
+### 👤 Customer Report
+Built a reusable SQL view providing:
+- Customer segmentation (VIP / Regular / New)
+- Recency, lifespan, total orders, total spend
+- Average order value & monthly spend
+
+### 📦 Product Report
+Built a reusable SQL view providing:
+- Product performance segmentation
+- Revenue, orders, customers, and lifecycle metrics
+- High-performing products driving overall revenue
 
 ---
 
-## 🚀 How to Use
+## 🛠️ SQL Techniques Used
+- Aggregations (`SUM`, `COUNT`, `AVG`)
+- Window functions (`LAG`, `SUM OVER`, `AVG OVER`)
+- CTEs (`WITH`)
+- Joins across fact & dimension tables
+- CASE statements for segmentation
+- Time-based analysis (`DATEDIFF`, `YEAR`, `MONTH`)
+- Ranking functions (`ROW_NUMBER`)
+- View creation for reporting
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Peter-Sobhy1/SQL_Data_Analytics_Project.git
-   ```
-2. Restore or connect to a SQL Server instance with the `gold` schema loaded (see `/datasets`).
-3. Open scripts in SSMS or VS Code with the SQL Server extension.
-4. Run scripts in order (1 → 13) for a structured analytical walkthrough, or run individual scripts independently for targeted analysis.
+---
 
+## 💡 Key Insights
+- Revenue is heavily concentrated in **Bikes (~96%)**, indicating strong product dependency  
+- The **United States and Australia** are the top revenue-generating markets  
+- A small group of products contributes disproportionately to total revenue  
+- Customer segmentation reveals a clear distinction between **high-value (VIP)** and low-engagement customers  
+
+---
+
+## ⚙️ Tools & Technologies
+- SQL Server  
+- SSMS (SQL Server Management Studio)  
+- T-SQL  
+
+---
+
+## 🎯 Conclusion
+This project showcases strong proficiency in **SQL for data analysis**, including advanced querying, analytical thinking, and transforming raw data into actionable insights.
+
+It reflects real-world analytics workflows used in business environments — from exploration to reporting.
+
+---
+
+## 👤 Author
+**Peter Sobhy**
+- LinkedIn: https://www.linkedin.com/in/peter-sobhy/
+- GitHub: https://github.com/Peter-Sobhy1
 ---
 
 ## 👤 Author
